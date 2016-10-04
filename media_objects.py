@@ -114,7 +114,8 @@ class AudioBook(Media):
 
 
 class Album(Media):
-    def __init__(self, name, year, owner, creation_date, global_id, artist, record_label, art_path, music_paths, genres):
+    def __init__(self, name, year, owner, creation_date, global_id, artist, record_label, art_path, music_paths,
+                 genres):
         Media.__init__(self, name, year, owner, creation_date, global_id)
         self.artist = artist
         self.record_label = record_label
@@ -136,3 +137,35 @@ class Album(Media):
 
     def genres(self):
         return self.genres
+
+
+class Misc(Media):
+    def __init__(self, name, year, owner, creation_date, global_id, explanation, document_type, active, location):
+        Media.__init__(self, name, year, owner, creation_date, global_id)
+        self.explanation = explanation
+        self.document_type = document_type
+        self.active = active
+        self.location = location
+
+    def get_explanation(self):
+        return self.explanation
+
+    def get_document_type(self):
+        return self.document_type
+
+    def get_active(self):
+        return self.active
+
+    def get_location(self):
+        return self.location
+
+
+
+    def set_active(self, active_status):
+        self.active = active_status
+
+    def set_explanation(self, new_explanation):
+        self.explanation = new_explanation
+
+    def set_location(self, new_location):
+        self.location = new_location

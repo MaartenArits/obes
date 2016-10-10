@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of audiobooks</title>
+</head>
+<body>
+    <h1>{{ amount_of_audiobooks }} audiobooks found in the library</h1>
+
+    {% for audiobook in audiobooks %}
+        {{ audiobook.get_json }}<br><br>
+    {% endfor %}
+</body>
+</html>

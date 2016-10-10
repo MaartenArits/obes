@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add serie</title>
+</head>
+<body>
+    <form action = "{% url 'serverSide:AddSeriesObject' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="data" value="series">
+        <h1> Series</h1>
+        Series name: <input type="text" name="series_name"><br>
+        Series year: <input type="date" name="series_year"><br>
+        Series owner: <input type="text" name="series_owner"><br>
+        Series global id: <input type="number" name="series_global_id"><br>
+        Series explanation: <input type="text" name="series_explanation"><br>
+        Series artwork path: <input type="text" name="series_art_path"><br>
+        Series genres: <input type="text" name="series_genres"><br>
+
+        <h1> Season</h1>
+        Season name: <input type="text" name="season_name"><br>
+        Season explanation: <input type="text" name="season_explanation"><br>
+        Season number: <input type="number" name="season_number"><br>
+        Season date: <input type="date" name="season_date"><br>
+        Season artwork path: <input type="text" name="season_art_path"><br>
+
+        <h1> Video</h1>
+        Video name: <input type="text" name="video_name"><br>
+        Video explanation: <input type="text" name="video_explanation"><br>
+        Video number: <input type="number" name="video_number"><br>
+        Video release date: <input type="date" name="video_date"><br>
+        Video artwork path: <input type="text" name="video_art_path"><br>
+        Video path: <input type="text" name = "video_path"><br>
+        <input type="submit" value="create series">
+
+    </form>
+</body>
+</html>

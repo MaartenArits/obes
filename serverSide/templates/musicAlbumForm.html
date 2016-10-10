@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add album</title>
+</head>
+<body>
+    <form action = "{% url 'serverSide:AddMusicObject' %}" method="post">
+        {% csrf_token %}
+         <input type="hidden" name="data" value="album">
+        Album name:<input type="text" name="name"><br>
+        Release date: <input type="date" name = "year"><br>
+        Owner:<input type="text" name="owner"><br>
+        Global ID:<input type="number" name="global_id"><br>
+        Artist:<input type="text" name="artist"><br>
+        Record label:<input type="text" name="record_label"><br>
+        Artwork path:<input type="text" name="art_path"><br>
+        Genres:<input type="text" name="genres"><br><br>
+
+        Add a song (only one due to this being a test form)<br>
+        Song name: <input type="text" name="song_name"><br>
+        Music path: <input type="text" name="music_path"><br><br>
+        <input type="submit" name="submit" value="add single"><br>
+    </form>
+
+</body>
+</html>

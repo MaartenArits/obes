@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <title>Index page</title>
+</head>
+<body>
+
+    <h1>
+        Adding objects
+    </h1>
+    <ul>
+        <li><a href = "{% url 'serverSide:AddMusicObject' %}">Add music</a></li>
+        <li><a href = "{% url 'serverSide:AddSeriesObject' %}">Add series</a></li>
+        <li><a href = "{% url 'serverSide:AddMovieObject' %}">Add movie</a></li>
+        <li><a href = "{% url 'serverSide:AddAudiobookObject' %}">Add audiobook</a></li>
+    </ul>
+
+    <hr>
+
+    <h1>
+        Reading objects
+    </h1>
+    <ul>
+        <li><a href = "{% url 'serverSide:ReadMusicObject' %}">Read music</a></li>
+        <li><a href = "{% url 'serverSide:ReadSeriesObject' %}">Read series</a></li>
+        <li><a href = "{% url 'serverSide:ReadMovieObject' %}">Read movie</a></li>
+        <li><a href = "{% url 'serverSide:ReadAudiobookObject' %}">Read audiobook</a></li>
+    </ul>
+
+</body>
+</html>

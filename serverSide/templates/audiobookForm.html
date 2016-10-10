@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add audiobook</title>
+</head>
+<body>
+    <form action = "{% url 'serverSide:AddAudiobookObject' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="data" value="audiobook">
+        Name: <input type="text" name="name"><br>
+        Release date: <input type="date" name="year"><br>
+        Owner: <input type="text" name="owner"><br>
+        Global ID: <input type="number" name="global_id"><br>
+        Language: <input type="text" name="language"><br>
+        Explanation: <input type="text" name="explanation"><br>
+        Publisher: <input type="text" name="publisher"><br>
+        Narrator: <input type="text" name="narrator"><br>
+        Author: <input type="text" name="author"><br>
+        Book path: <input type="text" name="book_path"><br>
+        Artwork path: <input type="text" name="art_path"><br>
+        <input type="submit" value="Add audiobook"><br>
+    </form>
+</body>
+</html>

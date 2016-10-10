@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of series</title>
+</head>
+<body>
+    <h1>{{ amount_of_series }} series found in the library</h1>
+
+    {% for serie in series %}
+        {{ serie.get_json }}<br><br>
+    {% endfor %}
+</body>
+</html>

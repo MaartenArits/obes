@@ -5,23 +5,31 @@
     <title>Add album</title>
 </head>
 <body>
-    <form action = "{% url 'serverSide:AddMusicObject' %}" method="post">
-        {% csrf_token %}
-         <input type="hidden" name="data" value="album">
-        Album name:<input type="text" name="name"><br>
-        Release date: <input type="date" name = "year"><br>
-        Owner:<input type="text" name="owner"><br>
-        Global ID:<input type="number" name="global_id"><br>
-        Artist:<input type="text" name="artist"><br>
-        Record label:<input type="text" name="record_label"><br>
-        Artwork path:<input type="text" name="art_path"><br>
-        Genres:<input type="text" name="genres"><br><br>
+    <h1>{{ amount_of_albums }} albums found</h1>
+    {% for album in albums %}
+        <form action = "{% url 'serverSide:AddMusicObject' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="data" value="album">
+            <input type="hidden" name="amount_of_songs"  value={{ album.music|length }}>
+            Album name:<input type="text" name="name" value="{{ album.name }}"><br>
+            Release date: <input type="date" name = "year"><br>
+            Owner:<input type="text" name="owner"><br>
+            Global ID:<input type="number" name="global_id"><br>
+            Artist:<input type="text" name="artist"><br>
+            Record label:<input type="text" name="record_label"><br>
+            Artwork path:<input type="text" name="art_path"><br>
+            Genres:<input type="text" name="genres"><br><br>
 
-        Add a song (only one due to this being a test form)<br>
-        Song name: <input type="text" name="song_name"><br>
-        Music path: <input type="text" name="music_path"><br><br>
-        <input type="submit" name="submit" value="add single"><br>
-    </form>
+            {% for music in album.music %}
+                Song name: <input type="text" name="song_name.{{ music.number }}" value="{{ music.song_name }}"><br>
+                Music path: <input type="text" name="music_path.{{ music.number }}" value="{{ music.music_path }}"><br>
+                Song number: <input type="number" name="song_number.{{ music.number }}" value="{{ music.number }}"><br>
+                Add song: <input type="checkbox" name="enable_song.{{ music.number }}" checked><br><br>
+            {% endfor %}
 
+            <input type="checkbox" name="delete_original" value="delete" checked> Delete the original folder.<br>
+            <input type="submit" name="submit" value="add single"><br><hr><br>
+        </form>
+    {% endfor %}
 </body>
 </html>

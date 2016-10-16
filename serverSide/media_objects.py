@@ -60,6 +60,9 @@ class Movie(Media):
     def get_json(self):
         return json.dumps(self.__dict__)
 
+    def set_by_json(self, **entries):
+        self.__dict__.update(entries)
+
 
 def encode(obj):
     return obj.__dict__
@@ -125,8 +128,7 @@ class Season(object):
                                                                 release_date)]
 
     def add_video_object(self, video_object):
-        if isinstance(video_object, SeriesVideos):
-            self.series_videos = self.series_videos + [video_object]
+        self.series_videos = self.series_videos + [video_object]
 
     def get_release_date(self):
         return self.release_date
@@ -153,11 +155,13 @@ class Series(Media):
         self.seasons = self.seasons + [Season(name, art_path, explanation, season_number, release_date)]
 
     def add_season_object(self, season_object):
-        if isinstance(season_object, Season):
-            self.seasons = self.seasons + [season_object]
+        self.seasons = self.seasons + [season_object]
 
     def get_seasons(self):
         return self.seasons
+
+    def get_genres(self):
+        return self.genres
 
     def get_json(self):
         return json.dumps(self.__dict__, default=encode)
@@ -193,20 +197,27 @@ class AudioBook(Media):
     def get_book_path(self):
         return self.book_path
 
+    def get_art_path(self):
+        return self.art_path
+
     def get_json(self):
         return json.dumps(self.__dict__)
 
 
 class Music(object):
-    def __init__(self, song_name, music_path):
+    def __init__(self, song_name, music_path, number):
         self.song_name = song_name
         self.music_path = music_path
+        self.number = number
 
     def get_song_name(self):
         return self.song_name
 
     def get_music_path(self):
         return self.music_path
+
+    def get_number(self):
+        return self.number
 
     def get_json(self):
         return json.dumps(self.__dict__)
@@ -236,12 +247,11 @@ class Album(Media):
     def get_music(self):
         return self.music
 
-    def add_music(self, song_name, music_path):
-        self.music = self.music + [Music(song_name, music_path)]
+    def add_music(self, song_name, music_path, number):
+        self.music = self.music + [Music(song_name, music_path, number)]
 
     def add_music_object(self, music_object):
-        if isinstance(music_object, Music):
-            self.music = self.music + [music_object]
+        self.music = self.music + [music_object]
 
     def get_json(self):
         return json.dumps(self.__dict__, default=encode)

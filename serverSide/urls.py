@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^readobject/series/', views.ReadSeriesObject, name='ReadSeriesObject'),
     url(r'^readobject/movie/', views.ReadMovieObject, name='ReadMovieObject'),
     url(r'^readobject/audiobook/', views.ReadAudiobookObject, name='ReadAudiobookObject'),
+
+    url(r'^files/', views.Filestructure, name='filestructure'),
 ]

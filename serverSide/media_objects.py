@@ -12,7 +12,7 @@ class Media(object):
     def get_name(self):
         return self.name
 
-    def get_year(self):
+    def get_date(self):
         return self.year
 
     def get_owner(self):
@@ -68,14 +68,26 @@ def encode(obj):
     return obj.__dict__
 
 
+def objects_to_json(obj):
+    media_json = []
+    for media in obj:
+        media_json.append(json.loads(media.get_json()))
+
+    return json.dumps(media_json)
+
+
 class SeriesVideos(object):
-    def __init__(self, name, art_path, explanation, video_number, video_path, release_date):
+    def __init__(self, name, art_path, explanation, video_number, video_path, release_date, global_id):
         self.name = name
         self.art_path = art_path
         self.explanation = explanation
         self.video_number = video_number
         self.video_path = video_path
         self.release_date = str(release_date)
+        self.global_id = global_id
+
+    def get_global_id(self):
+        return self.global_id
 
     def get_name(self):
         return self.name
@@ -100,13 +112,17 @@ class SeriesVideos(object):
 
 
 class Season(object):
-    def __init__(self, name, art_path, explanation, season_number, release_date):
+    def __init__(self, name, art_path, explanation, season_number, release_date, global_id):
         self.name = name
         self.art_path = art_path
         self.explanation = explanation
         self.season_number = season_number
         self.release_date = str(release_date)
         self.series_videos = []
+        self.global_id = global_id
+
+    def get_global_id(self):
+        return self.global_id
 
     def get_name(self):
         return self.name
@@ -123,9 +139,9 @@ class Season(object):
     def get_videos(self):
         return self.series_videos
 
-    def add_video(self, name, art_path, explanation, video_number, video_path, release_date):
-        self.series_videos = self.series_videos + [SeriesVideos(name, art_path, explanation, video_number, video_path,
-                                                                release_date)]
+    def add_video(self, name, art_path, explanation, video_number, video_path, release_date, global_id):
+        self.series_videos = self.series_videos + [
+            SeriesVideos(name, art_path, explanation, video_number, video_path, release_date, global_id)]
 
     def add_video_object(self, video_object):
         self.series_videos = self.series_videos + [video_object]
@@ -151,8 +167,8 @@ class Series(Media):
     def get_art_path(self):
         return self.art_path
 
-    def add_season(self, name, art_path, explanation, season_number, release_date):
-        self.seasons = self.seasons + [Season(name, art_path, explanation, season_number, release_date)]
+    def add_season(self, name, art_path, explanation, season_number, release_date, global_id):
+        self.seasons = self.seasons + [Season(name, art_path, explanation, season_number, release_date, global_id)]
 
     def add_season_object(self, season_object):
         self.seasons = self.seasons + [season_object]
@@ -205,10 +221,11 @@ class AudioBook(Media):
 
 
 class Music(object):
-    def __init__(self, song_name, music_path, number):
+    def __init__(self, song_name, music_path, number, global_id):
         self.song_name = song_name
         self.music_path = music_path
         self.number = number
+        self.global_id = global_id
 
     def get_song_name(self):
         return self.song_name
@@ -218,6 +235,9 @@ class Music(object):
 
     def get_number(self):
         return self.number
+
+    def get_global_id(self):
+        return self.global_id
 
     def get_json(self):
         return json.dumps(self.__dict__)
@@ -247,8 +267,8 @@ class Album(Media):
     def get_music(self):
         return self.music
 
-    def add_music(self, song_name, music_path, number):
-        self.music = self.music + [Music(song_name, music_path, number)]
+    def add_music(self, song_name, music_path, number, global_id):
+        self.music = self.music + [Music(song_name, music_path, number, global_id)]
 
     def add_music_object(self, music_object):
         self.music = self.music + [music_object]

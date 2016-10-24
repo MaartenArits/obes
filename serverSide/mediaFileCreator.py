@@ -1,6 +1,6 @@
 import shutil, os
 from django.utils import timezone
-from .media_objects import Movie, MediaLibrary, AudioBook, Album
+from .media_objects import Movie, MediaLibrary, AudioBook, Album, Season, Series, SeriesVideos, Music
 
 
 def addMovie(request, toAddMediaLocation, mediaLibraryLocation):
@@ -30,7 +30,7 @@ def deleteOldMovieFiles(movie, toAddMediaLocation):
     path_list = formated_dir.split('/')
     old_folder_location = path_list[0]
 
-    shutil.rmtree(toAddMediaLocation + '/movies/' + old_folder_location)
+    shutil.rmtree(toAddMediaLocation + 'movies/' + old_folder_location)
 
 
 def createMovieMetaFile(age, art, explanation, genres, global_id, movie, name, owner, trailer, working_directory, year):
@@ -200,7 +200,7 @@ def searchToAddMusic(toAddMediaLocation):
                     for number, location in enumerate(music_location):
                         song = location.split('/')[-1]
                         song = song.split('.')[0]
-                        toAddAlbum.add_music(song, location, number)
+                        toAddAlbum.add_music(song, location, number,0)
 
                     toAddMediaLibrary.add_album_object(toAddAlbum)
 
@@ -221,7 +221,7 @@ def searchToAddMusic(toAddMediaLocation):
         for number, location in enumerate(music_location):
             song = location.split('/')[-1]
             song = song.split('.')[0]
-            toAddAlbum.add_music(song, location, number)
+            toAddAlbum.add_music(song, location, number, 0)
 
         toAddMediaLibrary.add_album_object(toAddAlbum)
 
@@ -250,6 +250,8 @@ def addMusic(request, toAddMediaLocation, mediaLibraryLocation):
     copyMusicFiles(working_directory, temp_music_album, temp_music_album.get_art_path())
     createMusicMetaFiles(art_path, artist, creation_date, genres, global_id, name, owner, record_label,
                          temp_music_album, working_directory, year)
+    if 'delete_original' in request.POST:
+        shutil.rmtree(toAddMediaLocation + 'music/' + name + '/')
 
 
 def createMusicMetaFiles(art_path, artist, creation_date, genres, global_id, name, owner, record_label,
@@ -273,7 +275,8 @@ def find_enabled_songs(amount_of_songs_to_check, request, temp_music_album):
         if 'enable_song.' + str(song_index) in request.POST:
             temp_music_album.add_music(request.POST['song_name.' + str(song_index)],
                                        request.POST['music_path.' + str(song_index)],
-                                       request.POST['song_number.' + str(song_index)])
+                                       request.POST['song_number.' + str(song_index)],
+                                       request.POST['song_global_id.' + str(song_index)])
 
     return temp_music_album
 
@@ -290,3 +293,145 @@ def copyMusicFiles(working_directory, temp_music_album, art):
     for music in temp_music_album.get_music():
         shutil.copy(music.get_music_path(), working_directory + music.get_song_name() + '/')
     None
+
+
+def createSeriesMetaFiles(series_to_add, working_directory):
+    metaSeriesObject = Series(series_to_add.get_name(), series_to_add.get_date(), series_to_add.get_owner(),
+                              series_to_add.get_creation_date(), series_to_add.get_global_id(),
+                              series_to_add.get_explanation(), series_to_add.get_art_path(),
+                              series_to_add.get_genres())
+    for season in series_to_add.get_seasons():
+        season_dir = working_directory + "season " + str(season.get_season_number()) + '/'
+
+        metaSeasonObject = Season(season.get_name(), season.get_art_path(), season.get_explanation(),
+                                  season.get_season_number(), season.get_release_date(), season.get_global_id())
+
+        for episode in season.get_videos():
+            with open(season_dir + episode.get_name() + '/' + 'meta', 'wb+') as outfile:
+                outfile.write(episode.get_json())
+
+            metaSeasonObject.add_video_object(season_dir + episode.get_name() + '/' + 'meta')
+        metaSeriesObject.add_season_object(season_dir + 'meta')
+        with open(season_dir + 'meta', 'wb+') as outfile:
+            outfile.write(metaSeasonObject.get_json())
+    with open(working_directory + 'meta', 'wb+') as outfile:
+        outfile.write(metaSeriesObject.get_json())
+
+
+def findSeriesDataToAdd(request):
+    series_name = request.POST['series_name']
+    series_year = request.POST['series_year']
+    series_owner = request.POST['series_owner']
+    series_global_id = request.POST['series_global_id']
+    series_explanation = request.POST['series_explanation']
+    series_art_path = request.POST['series_art_path']
+    series_genres = request.POST['series_genres']
+    series_to_add = Series(series_name, series_year, series_owner, timezone.now(), series_global_id,
+                           series_explanation, series_art_path, series_genres)
+    for season_number in range(0, int(request.POST['amount_of_seasons'])):
+        if ("season_enable." + str(season_number)) in request.POST:
+            season_to_add = Season(request.POST["season_name." + str(season_number)],
+                                   request.POST["season_art_path." + str(season_number)],
+                                   request.POST["season_explanation." + str(season_number)],
+                                   request.POST["season_number." + str(season_number)],
+                                   request.POST["season_date." + str(season_number)],
+                                   request.POST["season_global_id." + str(season_number)])
+
+            for episode_number in range(0, int(request.POST['amount_of_episodes.' + str(season_number)])):
+                if ("video_enable." + str(season_number) + '.' + str(episode_number)) in request.POST:
+                    season_to_add.add_video(
+                        request.POST['video_name.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_art_path.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_explanation.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_number.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_path.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_date.' + str(season_number) + '.' + str(episode_number)],
+                        request.POST['video_global_id.' + str(season_number) + '.' + str(episode_number)])
+        series_to_add.add_season_object(season_to_add)
+    return series_to_add
+
+
+def createSeriesTree(series_to_add, working_directory):
+    os.mkdir(working_directory, 0755)
+    for season in series_to_add.get_seasons():
+        season_dir = working_directory + "season " + str(season.get_season_number()) + '/'
+
+        os.mkdir(season_dir, 0755)
+        for episode in season.get_videos():
+            os.mkdir(season_dir + episode.get_name() + '/', 0755)
+
+
+def copySeriesFiles(series_to_add, working_directory):
+    for season in series_to_add.get_seasons():
+        season_dir = working_directory + "season " + str(season.get_season_number()) + '/'
+
+        for episode in season.get_videos():
+            shutil.copy(episode.get_video_path(), season_dir + episode.get_name() + '/')
+
+
+def searchToAddSeries(toAddMediaLocation):
+    toAddMediaLibrary = MediaLibrary()
+    active_series = ''
+    current_series = ''
+    active_season = ''
+    current_season = ''
+    art_location = []
+    episode_location = []
+    seasons_to_add = []
+    season_number = 0
+    for dirname, dirnames, filenames in os.walk(toAddMediaLocation + 'series/'):
+        for filename in filenames:
+            formated_dir = dirname.split('/', len(toAddMediaLocation.split('/')))[-1]
+            path_list = formated_dir.split('/')
+            current_series = path_list[0]
+            current_season = path_list[1]
+
+            if active_season != '' and active_series != '':
+                if active_season != current_season:
+                    temp_season_to_add = Season(active_season, art_location, '', season_number, '')
+                    season_number += 1
+                    for number, location in enumerate(episode_location):
+                        episode_name = location.split('/')[-1].split('.')[0]
+                        print episode_name
+                        temp_season_to_add.add_video_object(SeriesVideos(episode_name, '', '', number, location, ''))
+
+                    seasons_to_add.append(temp_season_to_add)
+                    episode_location = []
+                    art_location = []
+
+                if active_series != current_series:
+                    temp_series_to_add = Series(active_series, '', '', timezone.now(), '', '', '', '')
+                    for season in seasons_to_add:
+                        temp_series_to_add.add_season_object(season)
+
+                    toAddMediaLibrary.add_serie_object(temp_series_to_add)
+                    art_location = []
+                    episode_location = []
+                    seasons_to_add = []
+                    season_number = 0
+
+            active_season = current_season
+            active_series = current_series
+
+            file_extention = filename.split('.')[-1]
+            if file_extention == 'JPG':
+                art_location.append(os.path.join(dirname, filename))
+
+            if file_extention == 'mp4':
+                episode_location.append(os.path.join(dirname, filename))
+    if active_season != '' and active_series != '':
+        if active_season == current_season:
+            temp_season_to_add = Season(active_season, art_location, '', season_number, '', 0)
+            for number, location in enumerate(episode_location):
+                episode_name = location.split('/')[-1].split('.')[0]
+                temp_season_to_add.add_video_object(SeriesVideos(episode_name, '', '', number, location, '', 0))
+
+            seasons_to_add.append(temp_season_to_add)
+        if active_series == current_series:
+            temp_series_to_add = Series(active_series, '', '', timezone.now(), '', '', '', '')
+            for season in seasons_to_add:
+                temp_series_to_add.add_season_object(season)
+
+            toAddMediaLibrary.add_serie_object(temp_series_to_add)
+
+    return toAddMediaLibrary

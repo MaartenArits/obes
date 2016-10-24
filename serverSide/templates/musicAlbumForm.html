@@ -24,6 +24,7 @@
                 Song name: <input type="text" name="song_name.{{ music.number }}" value="{{ music.song_name }}"><br>
                 Music path: <input type="text" name="music_path.{{ music.number }}" value="{{ music.music_path }}"><br>
                 Song number: <input type="number" name="song_number.{{ music.number }}" value="{{ music.number }}"><br>
+                Global id: <input type="number" name="song_global_id.{{ music.number }}"><br>
                 Add song: <input type="checkbox" name="enable_song.{{ music.number }}" checked><br><br>
             {% endfor %}
 

@@ -1,0 +1,38 @@
+
+.topnav {
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    margin:0 auto;
+}
+
+.navButton {
+    float: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.navButton:hover:not(.active) {
+    background-color: #111;
+
+}
+
+.topnavFrame{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.topnavBar{
+    background-color: #333;
+    opacity: 0.8;
+}
+
+.selected {
+    background-color: #FBB03B !important;
+    color: black;
+}

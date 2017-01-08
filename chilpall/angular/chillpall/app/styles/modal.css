@@ -1,0 +1,48 @@
+.modal-content {
+    background-color: #4D4D4D;
+}
+
+.model-body{
+    border: none;
+}
+
+.modal-footer{
+    border: none;
+}
+
+.modal-header{
+    border: none;
+}
+
+.musicPlaylist {
+    padding: 5px;
+}
+
+.musicPlaylistElement {
+    border: solid;
+    border-color: gray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.musicPlaylistElement:hover {
+    border: none;
+    background-color: grey;
+}
+
+#audio_player {
+
+}
+
+.selectedSong {
+    background-color: #FBB03B !important;
+    color: black;
+    border: none;
+}
+
+.modalCloseButton{
+    color: #4D4D4D;
+    background-color:  #FBB03B;
+}

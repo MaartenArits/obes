@@ -1,0 +1,56 @@
+.poster {
+    text-align: center;
+    overflow: hidden;
+    background-size: cover;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    height: 350px;
+}
+
+.poster_overlay {
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: opacity .7s ease;
+    -moz-transition: opacity .7s ease;
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    width: 70%;
+}
+
+.poster:hover .poster_overlay{
+    opacity: 1;
+}
+
+.mediaBox {
+    background-color: #4D4D4D;
+    box-shadow: 10px 10px 40px 19px rgba(61,61,61,1);
+    margin: 10px;
+    position: relative;
+}
+
+.infoBox{
+     position: absolute;
+     margin-left: 37%;
+     padding-right: 30px;
+     overflow: hidden;
+}
+
+.object_explanation{
+     text-overflow: ellipsis;
+     font-size: 1.1em;
+     overflow: hidden;
+     height: 200px;
+}
+
+.object_name{
+     text-overflow: ellipsis;
+     vertical-align: top;
+     overflow: hidden;
+     height: 80px;
+}
+
+.infobutton{
+     vertical-align: bottom;
+}

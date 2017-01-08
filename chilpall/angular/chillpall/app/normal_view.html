@@ -1,0 +1,655 @@
+<div class="row topnavBar">
+    <div class="topnavFrame">
+        <div class="col-md-2 topnav" *ngFor="let mediaButton of buttons"
+             [class.selected]="mediaButton === selectedMediaButton"
+             (click)="selectMedia(mediaButton)">
+            <div class="navButton">{{mediaButton.name}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="sidePanel col-md-2 col-lg-2 col-sm-2 hidden-xs">
+         <div class="row">
+             <div class="col-md-1"></div>
+             <div class="col-md-10">
+                 <div class="genrebuttonFrame">
+                 <div *ngFor="let genreButton of genres" [class.selected]="genreButton === selectedGenreButton"
+                      (click)="selectGenre(genreButton)" [style.background-color] = "(genreButton === selectedGenreButton) ? '#FBB03B' : '#333333'">
+                     <div class="sidePanelGenre" >{{genreButton.name}}</div>
+                 </div>
+                 </div>
+             </div>
+         <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="mainBody col-md-10 col-sm-10 col-lg-8">
+
+    <div *ngIf="selectedMediaButton.name == 'eula'" style="background-color: #4D4D4D; padding: 5%;">
+        <P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">The
+following terms of service and end user license agreement (“EULA”)
+constitute an agreement between you and Comvoy. This EULA governs
+your use of Software and Services (as specified below).&nbsp;</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><A NAME="_GoBack"></A>
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">For
+purposes of this EULA &quot;Software&quot; means all software
+programs distributed, published or otherwise made available by
+Chillpal or its affiliates including, but not limited to mobile
+games, downloadable/installable games for personal computer, and
+games accessed by means of a browser or other online communication
+method. Software also includes updates and upgrades as well as
+accompanying manual(s), packaging and other written, files,
+electronic or on-line materials or documentation, and any and all
+copies of such software and its materials.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20">“<FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Services”
+means all services made available by Chillpal, including but not
+limited to services accessed through mobile games, by means of a
+browser or by other online communication method.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Software
+and Services are collectively referred to as “Chillpal Services”.&nbsp;</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">THE
+SOFTWARE IS LICENSED, NOT SOLD. YOUR USE OF THE SOFTWARE (AS
+SPECIFIED BELOW) IS SUBJECT TO THE TERMS AND CONDITIONS SET FORTH IN
+THIS EULA. BY INSTALLING, USING OR ACCESSING THE CHILLPAL SERVICES OR
+ANY MATERIALS INCLUDED IN OR WITH THE CHILLPAL SERVICES, YOU HEREBY
+ACCEPT THE TERMS OF THIS EULA.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">If
+you do not accept the terms of this EULA, do not install, use or
+access the Chillpal Services.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>1.
+Licenses</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">SOFTWARE
+LICENSE.</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">&nbsp;Subject
+to this EULA and its terms and conditions, Chillpal hereby grants you
+a non-exclusive, non-transferable, non-sublicensable, limited right
+and license to use one copy of the Software for your personal
+non-commercial use for gameplay on a single computer or gaming unit,
+unless otherwise specified in the Software documentation. The rights
+granted herein are subject to your compliance with this EULA. The
+Software is being licensed to you and you hereby acknowledge that no
+title or ownership in the Software is being transferred or assigned
+and this EULA is not to be construed as a sale of any rights in the
+Software.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">SERVICE
+LICENSE.</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">&nbsp;Subject
+to this EULA and its terms and conditions, Chillpal hereby grants you
+a non-exclusive, non-transferable, non-sublicensable, limited right
+and license to use the Services as provided by Chillpal, for your
+personal non-commercial use, in the manner permitted by this EULA.
+The rights granted herein are subject to your compliance with this
+EULA.&nbsp;</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">LICENSE
+TERM.</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">&nbsp;The
+term of your licenses under this EULA shall commence on the date that
+you accept this EULA and install or otherwise use the Software and/or
+Services and ends on the earlier date of either your disposal of the
+Software and/or Services or Chillpal's termination of this EULA. Your
+license terminates immediately if you attempt to circumvent any
+technical protection measures used in connection with the Software
+and/or Services or you otherwise use the Software and/or Services in
+breach of the terms of this EULA.&nbsp;</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">OWNERSHIP;
+NO OTHER LICENSES.</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">&nbsp;Chillpal
+retains all right, title and interest in and to the Chillpal
+Services, including, but not limited to, all copyrights, trademarks,
+trade secrets, trade names, proprietary rights, patents, titles,
+computer codes, audiovisual effects, themes, characters, character
+names, stories, dialog, settings, artwork, sound effects, musical
+works, and moral rights whether registered or not and all
+applications thereof. The Chillpal Services are protected by
+applicable laws and treaties throughout the world. Unless expressly
+authorized by mandatory legislation, the Chillpal Services may not be
+copied, reproduced or distributed in any manner or medium, in whole
+or in part, without prior written consent from Chillpal. All rights
+not expressly granted to you herein are reserved by Chillpal.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>2.
+Third party services</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Chillpal
+Services may include links to third party services and/or the third
+party services may be made available to you via Chillpal Services.
+These services may include, but are not limited to gameplay recording
+and sharing, social medial connectivity and the like. These services
+are subject to respective third party terms and conditions. Please
+study these third party terms and conditions carefully as they
+constitute an agreement between you and the applicable third party
+service provider.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>3.
+General license conditions</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">You
+agree not to: (i) commercially exploit the Chillpal Services; (ii)
+distribute, lease, license, sell, rent, lend, convey or otherwise
+transfer or assign the Chillpal Services, any copies thereof, or any
+passwords or usernames of Chillpal Services, without the express
+prior written consent of Chillpal or as set forth in this EULA; (iii)
+make a copy of the Chillpal Services or any part thereof, including
+but not limited to Software (other than as set forth herein); (iv)
+make the Chillpal Services publicly available or available on a
+network for use or download by multiple users; (v) except as
+otherwise specifically provided by the Chillpal Services or this
+EULA, use or install the Chillpal Services (or permit others to do
+same) on a network, for on-line use, or on more than one computer or
+gaming unit at the same time; (vi) use or copy the Chillpal Services
+at a computer gaming center or any other location-based site;
+provided, that Chillpal may offer you a separate site license
+agreement to make the Chillpal Services available for commercial use;
+(vii) reverse engineer, decompile, disassemble, translate, prepare
+derivative works based on or otherwise modify the Chillpal Services,
+in whole or in part; (viii) remove, obscure or modify any copyright,
+trademark or other proprietary rights notices, marks or labels
+contained on or within the Chillpal Services, falsify or delete any
+author attributions, legal notices or other labels of the origin or
+source of the material; (ix) misrepresent the source of ownership of
+the Chillpal Services; (x) transport, export or re-export (directly
+or indirectly) into any country forbidden to receive such Chillpal
+Services by any U.S. or other export laws or accompanying regulations
+or otherwise violate such laws or regulations, that may be amended
+from time to time; or (xi) scrape, build databases or otherwise
+create permanent copies of content returned from the Chillpal
+Services.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">However,
+with regards to installable Software that was delivered on a physical
+storage medium, you may transfer the entire Software and accompanying
+documentation on a permanent basis to another person as long as you
+retain no copies (including archival or backup copies) of the
+Software, accompanying documentation, or any portion or component of
+the Software accompanying documentation, and the recipient agrees to
+the terms of this EULA The Software is intended for private use only.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">The
+Chillpal Services may include measures to control access to the
+Chillpal Service, prevent unauthorized copies, or otherwise attempt
+to prevent anyone from exceeding the limited rights and licenses
+granted under this EULA. Only Chillpal Services subject to a valid
+license can be used to access online services, and download updates
+and patches. You may not interfere with such access control measures
+or attempt to disable or circumvent such security features. If you
+disable or otherwise tamper with the technical protection measures,
+the Chillpal Services will not function properly.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">The
+Chillpal Services may allow you to create content, including but not
+limited to gameplay maps, screenshots or a video of your game play.
+In exchange for use of the Chillpal Services, and to the extent that
+your contributions through use of the Chillpal Services give rise to
+any copyright, design right or any other intellectual or industrial
+property right you hereby grant Chillpal an exclusive, royalty-free,
+perpetual, irrevocable, fully transferable and sub-licensable
+worldwide right and license to use your contributions in any way and
+for any purpose including, but not limited to the rights to
+reproduce, copy, adapt, modify, perform, display, publish, broadcast,
+transmit, or otherwise communicate to the public by any means whether
+now known or unknown and distribute your contributions without any
+further notice or compensation to you of any kind for the whole
+duration of protection granted to intellectual and industrial
+property rights by applicable laws and international conventions. If
+not expressly prohibited by mandatory legislation, you hereby waive
+any moral rights of paternity, publication, reputation, or
+attribution with respect to Chillpal's and other players' use and
+enjoyment of such assets in connection with the Chillpal Services and
+related goods and services under applicable law. This license grant
+to Chillpal, and the above waiver of any applicable moral rights,
+survives any termination of this EULA.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">The
+Chillpal Services may require an internet connection to access the
+Chillpal Services or its internet-based features, authenticate the
+Software, or perform other functions. In order for certain features
+of the Chillpal Services to operate properly, you may be required to
+have and maintain (a) an adequate internet connection and/or (b) a
+valid and active account with an online service as set forth in the
+documentation related to Chillpal Services. By using the Chillpal
+Services, you acknowledge and agree that third party data transfer
+fees may apply depending on your data plan. Please consult your
+carrier for further information. If you do not maintain such
+accounts, then the Chillpal Services or certain features of the
+Chillpal Services may not operate or may cease to function properly,
+either in whole or in part.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>4.
+Information collection and use; Privacy policy</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">By
+installing, accessing or using the Chillpal Services, you consent to
+these information collection and usage terms, including (where
+applicable) the transfer of data into a country outside of the
+European Union and/or the European Economic Area or the United States
+of America.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Chillpal
+respects your privacy rights and recognizes the importance of
+protecting any information collected about you. Chillpal's privacy
+policy as amended from time to time is available
+at&nbsp;</SPAN></FONT></FONT></FONT><A HREF="http://www.rovio.com/privacy"><FONT COLOR="#ef2528"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US"><U><B>www.chillpal.be/privacy</B></U></SPAN></FONT></FONT></FONT></A><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">&nbsp;(&quot;Privacy
+Policy&quot;) and applicable to this EULA. Chillpal’s Privacy
+Policy defines how, why and to which extent Chillpal collects and
+uses personal and non-personal information in relation to Chillpal's
+products and services. By installing, accessing or using the Chillpal
+Services you explicitly agree with the terms and conditions of
+Chillpal’s Privacy Policy and to any terms and conditions included
+therein by reference.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>5.
+Payments and purchases of virtual goods</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Chillpal
+may license to you certain virtual goods to be used within Chillpal
+Services. Unless otherwise specified, these virtual goods shall be
+deemed an integral part of the Software. These virtual goods may be
+licensed both for a fee using “real world money” and without any
+separate fee, as applicable from time to time. These virtual goods
+may also be licensed by using third party virtual currency, such as
+Facebook Credits or by using separate activation codes.<BR>Any and
+all virtual goods are licensed to you on limited, personal,
+non-transferable, non-sublicensable and revocable basis and limited
+only for non-commercial use.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Please
+note that any payment for licenses for virtual goods or redemption of
+third party virtual currency is always FINAL AND NON-REFUNDABLE. Also
+please note that if you purchase Facebook Credits from Facebook, such
+transaction is governed by the agreement between you and Facebook and
+Chillpal is not a party to the transaction.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Chillpal
+may manage, regulate, control, modify or eliminate virtual goods at
+any time, with or without notice. Chillpal shall have no liability to
+you or any third party in the event that Chillpal exercises any such
+rights.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">SUBJECT
+TO MANDATORY LEGISLATION, YOU ACKNOWLEDGE THAT CHILLPAL IS NOT
+REQUIRED TO PROVIDE A REFUND FOR VIRTUAL GOODS FOR ANY REASON, AND
+THAT YOU WILL NOT RECEIVE MONEY OR OTHER COMPENSATION FOR UNUSED
+VIRTUAL GOODS, WHETHER YOUR LOSS OF LICENSE UNDER THIS EULA WAS
+VOLUNTARY OR INVOLUNTARY.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>6.
+Warranty</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>6.1
+Warranty for Physical software Products&nbsp;</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Chillpal
+warrants to you (if you are the initial and original purchaser of the
+Software) that, to the extent the Software is made available to you
+on a physical storage medium, the original storage medium holding the
+Software is free from defects in material and workmanship under
+normal use and service for 90 days from the date of purchase. If
+mandatory legislation in your jurisdiction requires longer in excess
+to the aforementioned 90 days, the length of the warranty is amended
+accordingly. If for any reason you find a defect in the physical
+storage medium during the warranty period, Chillpal agrees to
+replace, free of charge, any physical storage medium and related
+Software discovered to be defective within the warranty period as
+long as the Software is currently commercially distributed by
+Chillpal. If the Software is no longer available, Chillpal retains
+the right to substitute a similar piece of Software of equal or
+greater value. This warranty is limited to the physical storage
+medium and the Software as originally provided by Chillpal and is not
+applicable to normal wear and tear. This warranty shall not be
+applicable and shall be void if the defect has arisen through abuse,
+mistreatment, or neglect. Any implied warranties prescribed by
+statute are expressly limited to the warranty period described above.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">When
+returning the Software subject to the limited warranty above, please
+send the original Software only to the Chillpal address specified
+below and include: your name and return address; a photocopy of your
+dated sales receipt; and a brief note describing the defect and the
+system on which you are running the Software.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>6.2
+No other Warranties</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">NOTWITHSTANDING
+THE ABOVEMENTIONED WARRANTY FOR PHYSICAL STORAGE MEDIUM SPECIFIED IN
+SECTION 6.1 ABOVE, AND TO THE FULLEST EXTENT PERMISSIBLE UNDER
+APPLICABLE LAW, THE CHILLPAL SERVICES ARE PROVIDED TO YOU “AS IS,”
+WITH ALL FAULTS, WITHOUT WARRANTY OF ANY KIND, WITHOUT PERFORMANCE
+ASSURANCES OR GUARANTEES OF ANY KIND, AND YOUR USE IS AT YOUR SOLE
+RISK. THE ENTIRE RISK OF SATISFACTORY QUALITY AND PERFORMANCE RESIDES
+WITH YOU. CHILLPAL, CHILLPAL’S LICENSORS AND CHANNEL PARTNERS DO
+NOT MAKE, AND HEREBY DISCLAIM, ANY AND ALL EXPRESS, IMPLIED OR
+STATUTORY WARRANTIES, INCLUDING IMPLIED WARRANTIES OF CONDITION,
+UNINTERRUPTED USE, ACCURACY OF DATA (INCLUDING BUT NOT LIMITED TO
+LOCATION DATA), MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A
+PARTICULAR PURPOSE, NONINFRINGEMENT OF THIRD PARTY RIGHTS, AND
+WARRANTIES (IF ANY) ARISING FROM A COURSE OF DEALING, USAGE, OR TRADE
+PRACTICE. CHILLPAL, CHILLPAL’S LICENSORS AND CHANNEL PARTNERS DO
+NOT WARRANT AGAINST INTERFERENCE WITH YOUR ENJOYMENT OF THE SOFTWARE;
+THAT THE CHILLPAL SERVICES WILL MEET YOUR REQUIREMENTS; THAT
+OPERATION OF THE CHILLPAL SERVICES WILL BE UNINTERRUPTED OR
+ERROR-FREE, OR THAT THE CHILLPAL SERVICES WILL INTEROPERATE OR BE
+COMPATIBLE WITH ANY OTHER CHILLPAL SERVICES OR THAT ANY ERRORS IN THE
+CHILLPAL SERVICES WILL BE CORRECTED. NO ORAL OR WRITTEN ADVICE
+PROVIDED BY CHILLPAL, CHILLPAL’S LICENSORS AND CHANNEL PARTNERS OR
+ANY AUTHORIZED REPRESENTATIVE SHALL CREATE A WARRANTY. SOME
+JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF OR LIMITATIONS ON IMPLIED
+WARRANTIES OR THE LIMITATIONS ON THE APPLICABLE STATUTORY RIGHTS OF A
+CONSUMER, SO SOME OR ALL OF THE ABOVE EXCLUSIONS AND LIMITATIONS
+APPLY ONLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE
+JURISDICTION.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>7.
+Limitations of liability</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">IN
+NO EVENT WILL CHILLPAL, CHILLPAL’S AFFILIATES, CHILLPAL’S
+LICENSORS OR CHANNEL PARTNERS BE LIABLE FOR SPECIAL, INCIDENTAL OR
+CONSEQUENTIAL DAMAGES RESULTING FROM POSSESSION, ACCESS, USE OR
+MALFUNCTION OF THE CHILLPAL SERVICES, INCLUDING BUT NOT LIMITED TO,
+DAMAGES TO PROPERTY, LOSS OF GOODWILL, COMPUTER FAILURE OR
+MALFUNCTION AND, TO THE EXTENT PERMITTED BY LAW, DAMAGES FOR PERSONAL
+INJURIES, PROPERTY DAMAGE, LOST PROFITS OR PUNITIVE DAMAGES FROM ANY
+CAUSES OF ACTION ARISING OUT OF OR RELATED TO THIS EULA OR THE
+SOFTWARE, WHETHER ARISING IN TORT (INCLUDING NEGLIGENCE), CONTRACT,
+STRICT LIABILITY OR OTHERWISE AND WHETHER OR NOT CHILLPAL, CHILLPAL’S
+LICENSORS OR CHANNEL PARTNERS HAVE BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES. FOR PURPOSES OF THIS SECTION 7, CHILLPAL’S LICENSORS
+AND CHANNEL PARTNERS ARE THIRD PARTY BENEFICIARIES TO THE LIMITATIONS
+OF LIABILITY SPECIFIED HEREIN AND THEY MAY ENFORCE THIS EULA AGAINST
+YOU.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">BECAUSE
+SOME STATES/COUNTRIES DO NOT ALLOW CERTAIN LIMITATIONS OF LIABILITY,
+THIS LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT
+PERMITTED BY LAW IN THE APPLICABLE JURISDICTION. THIS LIMITATION OF
+LIABILITY SHALL NOT BE APPLICABLE SOLELY TO THE EXTENT THAT ANY
+SPECIFIC PROVISION OF THIS LIMITATION OF LIABILITY IS PROHIBITED BY
+ANY FEDERAL, STATE, OR MUNICIPAL LAW, WHICH CANNOT BE PRE-EMPTED.
+THIS EULA GIVES YOU SPECIFIC LEGAL RIGHTS, AND YOU MAY HAVE OTHER
+RIGHTS THAT VARY FROM JURISDICTION TO JURISDICTION.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">IN
+NO EVENT SHALL CHILLPAL’S, CHILLPAL’S AFFILIATES’, CHILLPAL’S
+LICENSORS’ OR CHANNEL PARTNERS’ LIABILITY FOR ALL DAMAGES (EXCEPT
+AS REQUIRED BY APPLICABLE LAW) EXCEED THE ACTUAL PRICE PAID BY YOU
+FOR USE OF THE CHILLPAL SERVICES OR FIVE &nbsp;EUROS (EUR 5),
+WHICHEVER LESS.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.33in; margin-bottom: 0.17in; line-height: 100%">
+<FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=6 STYLE="font-size: 22pt"><SPAN LANG="en-US"><B>8.
+Other terms and conditions</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">TERMINATION</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">:
+This EULA will terminate automatically if you fail to comply with its
+terms and conditions. In such event, you must destroy all copies of
+the Software and all of its component parts and cease and desist from
+accessing any Chillpal Services. With regards to Software delivered
+on a physical storage medium you can end this EULA by destroying the
+Software and all copies and reproductions of the Software and
+deleting and permanently purging the Software from any client server
+or computer on which it has been installed.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">EQUITABLE
+REMEDIES</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">:
+You hereby agree that if the terms of this EULA are not specifically
+observed, Chillpal will be irreparably damaged, and therefore you
+agree that Chillpal shall be entitled, without bond, other security
+or proof of damages, to appropriate equitable remedies with respect
+to your breach of any of the terms of this EULA, in addition to any
+other available remedies.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">AFFILIATE</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">:
+For purposes of this EULA, an “affiliate” or Chillpal means any
+legal entity that is directly or indirectly controlled by Chillpal
+for so long as such control lasts. &nbsp;Control shall exist through
+direct or indirect ownership of more than 50 % of the nominal value
+of the issued equity share capital or more than 50 % of the shares
+entitling the holders to vote for the election of the members of the
+board of directors or persons performing similar functions.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">INDEMNITY:
+You agree to indemnify, defend and hold Chillpal, its partners,
+affiliates, contractors, officers, directors, employees and agents
+harmless from and against any and all damages, losses and expenses
+arising directly or indirectly from: (i) your acts and omissions to
+act in using the Chillpal Services pursuant to the terms of the EULA;
+or (ii) your breach of this EULA.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">MISCELLANEOUS</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">:
+This EULA represents the complete agreement concerning this license
+between the parties and supersedes all prior agreements and
+representations between them. Chillpal reserves the right, at its
+discretion, to change, modify, add or remove portions of this EULA by
+posting the updated EULA on Chillpal’s website. You will be deemed
+to have accepted such changes by continuing to use the Chillpal
+Services. If any provision of this EULA is held to be unenforceable
+for any reason, such provision shall be reformed only to the extent
+necessary to make it enforceable and the remaining provisions of this
+EULA shall not be affected.</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="inherit, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">GOVERNING
+LAW AND DISPUTE RESOLUTION</SPAN></FONT></FONT></FONT><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">.
+This EULA will be governed by the laws of Finland without reference
+to its choice of law rules. The United Nations Convention for the
+International Sale of Goods shall not apply.&nbsp;</SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0.17in; line-height: 100%"><FONT COLOR="#1b1c20"><FONT FACE="Helvetica, serif"><FONT SIZE=3 STYLE="font-size: 11pt"><SPAN LANG="en-US">Any
+dispute, controversy or claim arising out of or relating to this EULA
+or the breach, termination or validity thereof shall be finally
+settled at Chillpal's discretion (i) at your domicile's competent
+courts; or (ii) by arbitration in accordance with the Rules for
+Expedited Arbitration of the Arbitration Institute of the Finland
+Chamber of Commerce. The arbitration shall be conducted in Helsinki,
+Finland, in the English language. YOU AGREE THAT YOU MAY BRING CLAIMS
+AGAINST CHILLPAL ONLY IN YOUR INDIVIDUAL CAPACITY AND NOT AS A
+PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE
+PROCEEDING.</SPAN></FONT></FONT></FONT></P>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div *ngFor="let object of evenSelectedObjects">
+                <div class="mediaBox row">
+                    <div class="col-xs-5 poster">
+                        <img [src]="object.art_path" alt="media artwork" style="max-width:100%; height: 300px">
+                        <div class="poster_overlay">
+                            <div *ngIf="selectedMediaButton.name == 'Movies'">
+                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                        data-toggle="modal"
+                                        data-target="#mainModal" (click)="selectVideo(object)"
+                                        *ngIf="selectedMediaButton.name == 'Movies'">Watch movie
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                        data-toggle="modal"
+                                        data-target="#mainModal" (click)="selectTrailer(object)">Watch trailer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-7 infoBox">
+                        <h1 class="object_name">{{ object.name }}</h1>
+
+			<div class="object_explanation">
+                            {{object.explanation}}
+			</div>
+
+                        <button type="button" class="btn btn-primary btn-lg btn-block infobutton" data-toggle="modal"
+                                data-target="#mainModal"
+                                (click)="selectedModalMedia(object)">More info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div *ngFor="let object of unevenSelectedObjects">
+                <div class="mediaBox row">
+                    <div class="col-xs-5 poster">
+                        <img [src]="object.art_path" alt="media artwork" style="max-width:100%; height: 300px">
+                        <div class="poster_overlay">
+                            <div *ngIf="selectedMediaButton.name == 'Movies'">
+                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                        data-toggle="modal"
+                                        data-target="#mainModal" (click)="selectVideo(object)">Watch movie
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                        data-toggle="modal"
+                                        data-target="#mainModal" (click)="selectTrailer(object)">Watch trailer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-7 infoBox">
+                        <h1  class="object_name">{{ object.name }}</h1>
+
+			<div class="object_explanation">
+                        {{object.explanation}}
+			</div>
+
+                        <button type="button" class="btn btn-primary btn-lg btn-block infobutton" data-toggle="modal"
+                                data-target="#mainModal"
+                                (click)="selectedModalMedia(object)">More info
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-2"></div>
+</div>
+
+
+
+
+<div id="mainModal" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="modalCleanup()" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{selectedObject.name}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngIf="selectedMediaButton.name == 'Movies'">
+                    <div class="col-md-7">
+
+                        <div *ngIf="videoActive == true">
+                            <video id="video_player" [src]="modal_video_path" [poster]="selectedObject.art_path"
+                                   controls
+                                   width="100%" type="video/mp4" #videoPlayer>
+                                browser does not support the video tag.
+                            </video>
+                        </div>
+
+                    </div>
+                    <div class="col-md-5">
+                        <h1>{{selectedObject.name}}</h1>
+                        <div *ngIf="selectedMediaButton.name == 'Movies'">
+                            <br>
+                            {{selectedObject.explanation}}
+                            <br>
+                            <br>
+
+                            <button type="button" class="btn btn-primary btn-lg btn-block"
+                                    (click)="selectVideo(selectedObject)">
+                                Watch movie
+                            </button>
+                            <button type="button" class="btn btn-primary btn-lg btn-block"
+                                    (click)="selectTrailer(selectedObject)">
+                                Watch trailer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="selectedMediaButton.name == 'Music'">
+                    <div *ngIf="musicActive == true">
+                        <audio id="audio_player" [src]="modal_audio_path" controls>
+                            Browser does not support the audio player
+                        </audio>
+                    </div>
+                    <div class="musicPlaylist">
+                        {{selectedObject.artist}}
+                        {{selectedObject.record_label}}
+                        <div *ngFor="let song of selectedObject.songs">
+                            <div class="musicPlaylistElement" [class.selectedSong]="song === selectedSong"
+                                 (click)="selectSong(song)">
+                                {{song.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="selectedMediaButton.name == 'Series'">
+                    <div *ngIf="seasonActive == false">
+                        <div class="col-md-4">
+                            <img [src]="selectedObject.art_path" alt="media artwork" style="max-width:100%">
+                        </div>
+
+                        <div class="col-md-8">
+                            <div *ngFor="let season of selectedObject.seasons">
+                                <button type="button" class="btn btn-primary btn-lg btn-block"
+                                        (click)="selectSeason(season)">
+                                    {{season.name}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="seasonActive == true">
+                        <h1>{{selectedSeason.name}}</h1>
+                        <div *ngFor="let episode of selectedSeason.series_videos">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <video [src]="episode.video_path" [poster]="episode.art_path"
+                                           controls
+                                           width="100%" type="video/mp4">
+                                        browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="col-md-5">
+                                    <h1>{{episode.name}}</h1>
+
+                                    {{episode.explanation}}
+
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-lg btn-block"
+                                (click)="selectSeasonOverview()">
+                            Return to seasons
+                        </button>
+                    </div>
+                </div>
+
+                <div *ngIf="selectedMediaButton.name == 'Audiobooks'">
+                    <h1>{{selectedObject.name}}</h1>
+                    {{selectedObject.explanation}}
+                    <audio [src]="selectedObject.book_path" controls>
+                        Browser does not support the audio player
+                    </audio>
+                </div>
+
+                <div *ngIf="selectedMediaButton.name == 'Info'" align="center" style="width: 80%">
+                    <h1>{{selectedObject.name}}</h1>
+                    {{selectedObject.explanation}}
+                    <br><br>
+                    <div *ngIf="selectedObject.name != 'Roadmap'">
+                    {{selectedObject.moreInfo}}
+                    </div>
+
+                    <div *ngIf="selectedObject.name == 'Roadmap'">
+                        <img [src]="selectedObject.moreInfo" alt="roadmap" style="width:90%;">
+                    </div>
+                    <div *ngIf="selectedObject.feedbackName != ''" align="left">
+                        <div>
+                            Name: <input [(ngModel)]="feedbackName">
+                        </div>
+
+                        <div>
+                            Email: <input [(ngModel)]="feedbackEmail" >
+                        </div>
+
+                        <div>
+                        Feedback:<br>
+                        <textarea style="width: 100%" rows="10" [(ngModel)]="feedback" ></textarea>
+                        </div>
+
+                        <div>
+                            <button (click)="submitFeedback()">Submit feedback</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default modalCloseButton" data-dismiss="modal" (click)="modalCleanup()">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="credits hidden-xs hidden-sm hidden-md">
+    Design: Sven<br>
+    Programming: Natan
+</div>
+

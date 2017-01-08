@@ -1,0 +1,33 @@
+
+.btn-primary {
+    background-color: #FBB03B;
+    color: #4D4D4D;
+}
+
+.mainBody {
+    margin-top: 5%;
+#    margin-left: 18%;
+#    margin-right: 18%;
+}
+
+h1 {
+    color: #FBB03B;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+}
+
+h4 {
+    color: #FBB03B;
+}
+
+.btn {
+    border-radius: 0;
+    border: hidden;
+}
+
+.credits {
+    position: fixed;
+    bottom: 1%;
+    right: 1%;
+}
+
